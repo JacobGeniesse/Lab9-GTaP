@@ -1,7 +1,7 @@
 using UnityEngine;
 using static Score;
 
-public class ScoreReward : MonoBehaviour
+public class ScoreReward : MonoBehaviour, IObserver
 {
 
     public delegate void TakeHit();
@@ -35,5 +35,10 @@ public class ScoreReward : MonoBehaviour
         {
             onHit?.Invoke();
         }
+    }
+
+    public void ListenTrigger(IScore masterScore)
+    {
+        IncrementScore();
     }
 }

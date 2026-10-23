@@ -1,24 +1,58 @@
 using NUnit.Framework;
 using UnityEngine;
+using System;
 using System.Collections.Generic;
+using TMPro;
 
-public class Score : MonoBehaviour
+public class Score : MonoBehaviour, IObserver
 {
-    [SerializeField] private float score;
+    public float score;
 
+    [SerializeField] private TextMeshProUGUI scoreText;
 
-    private List<IObserver> observers = new List<IObserver>();
+    public static Score instance;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
-        
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Debug.LogWarning("Multiple Score Scripts in one scene!");
+            Destroy(this);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private List<IObserver> listeners = new List<IObserver>();
+
+
+    private void Start()
     {
-        
+        scoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
     }
 
+    public void UpdateScore(float addedAmount)
+    {
+        if(score + addedAmount > 0)
+        {
+            score += addedAmount;
+        }
+        else
+        {
+            score = 0;
+        }
+    }
+
+    private void UpdateUI()
+    {
+        scoreText.text = "Score: " + score;
+    }
+
+    public void ListenTrigger(IScore masterScore)
+    {
+        UpdateUI();
+    }
 }

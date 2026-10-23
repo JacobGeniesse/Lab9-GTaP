@@ -1,17 +1,30 @@
+using UnityEditor;
 using UnityEngine;
 
 public class TargetBuilder : MonoBehaviour, IBuilder
 {
+    [SerializeField] public GameObject newTarget; 
     private TargetBase targetBase;
+    private Score scoreManager;
 
-    public TargetBuilder()
+    [SerializeField] private Vector3 spawnPoint;
+
+    private void Awake()
     {
-        this.Reset();
+        scoreManager = GetComponent<Score>();
     }
 
     public void Reset()
     {
-        this.targetBase = new TargetBase();
+        if(newTarget != null)
+        {
+            GameObject newbie = Instantiate(newTarget, spawnPoint, Quaternion.identity);
+            this.targetBase = newbie.GetComponent<TargetBase>();
+        }
+        else
+        {
+            Debug.LogWarning("newTarget not assigned!");
+        }
     }
 
     public void BuildSpeed(float speed)
@@ -21,11 +34,12 @@ public class TargetBuilder : MonoBehaviour, IBuilder
 
     public void BuildPoints(float points)
     {
-        this.targetBase.SetPoints(points);
+        this.targetBase.SetPoints(points, scoreManager);
     }
 
     public void BuildSprite(Sprite sprite)
     {
         this.targetBase.SetSprite(sprite);
     }
+
 }
