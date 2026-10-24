@@ -1081,7 +1081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TargetBuilder
   newTarget: {fileID: 6253426280444781225, guid: 6978f04cc8d4e10469f1b6f07c6dcc48, type: 3}
-  spawnPoint: {x: -5, y: 6.9, z: 0}
+  spawnPoint: {x: -5, y: 7.25, z: 0}
 --- !u!114 &2040826980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1096,12 +1096,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TargetDirector
   initialDelay: 1
   continuousDelay: 3
-  fastSpeed: 10
-  fastPoints: 100
-  fastSprite: {fileID: 21300000, guid: 72507ab5386aaf449ad590b95dc05e0e, type: 3}
-  standardSpeed: 3
-  standardPoints: 50
-  standardSprite: {fileID: 21300000, guid: 3c4fdc4ae89eadf4ebede52d7460d0e7, type: 3}
+  targetTypes:
+  - targetType: Standard Target
+    targetSpeed: 3
+    pointValue: 50
+    targetSprite: {fileID: 21300000, guid: 3c4fdc4ae89eadf4ebede52d7460d0e7, type: 3}
+  - targetType: Fast Target
+    targetSpeed: 10
+    pointValue: 100
+    targetSprite: {fileID: 21300000, guid: 72507ab5386aaf449ad590b95dc05e0e, type: 3}
   builder: {fileID: 0}
 --- !u!114 &2040826981
 MonoBehaviour:
@@ -1116,7 +1119,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Score
   score: 0
-  scoreText: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

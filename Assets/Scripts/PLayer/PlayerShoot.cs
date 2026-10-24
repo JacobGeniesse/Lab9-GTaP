@@ -15,6 +15,7 @@ public class PlayerShoot : MonoBehaviour
 
     private InputAction shoot;
 
+    //Add the shoot to the input list
     void OnEnable()
     {
         try
