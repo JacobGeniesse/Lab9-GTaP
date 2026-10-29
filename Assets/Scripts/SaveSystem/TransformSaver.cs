@@ -1,21 +1,38 @@
-//using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine;
 
-//public class TransformSaver : MonoBehaviour, ISaveable
-//{
-//    private const string LOCAL_POSITION_KEY = "localPosition";
-//    private const string LOCAL_ROTATION_KEY = "localRotation";
-//    private const string LOCAL_SCALE_KEY = "localScale";
+public class TransformSaver : MonoBehaviour, ISaveable
+{
+    private const string LOCAL_TRANSFORM_KEY = "localTrans";
+
+    [SerializeField] private TransformClass transformData;
 
 
-
-//    void Start()
-//    {
+    public TransformClass SaveID {
         
-//    }
+        get 
+        {
+            transformData.localPosition = transform.localPosition;
+            transformData.localRotation = transform.localRotation;
+            transformData.localScale = transform.localScale;
+            return transformData;
+        }
+    }
 
-//    void LoadFromData(string data)
-//    {
-//        if(data.ContainsKey(LOCAL_POSITION_KEY)) { transform.localPosition = JsonUtility.FromJsonOverwrite(data[LOCAL_POSITION_KEY])}
-//    }
+    public Dictionary<string, TransformClass> SavedData
+    {
+        get
+        {
+            var result = new Dictionary<string, TransformClass>();
+            result.Add(LOCAL_TRANSFORM_KEY, SaveID);
+            return result;
+        }
+    }
 
-//}
+    public void LoadFromData(Dictionary<string, TransformClass> data)
+    {
+        
+    }
+
+
+}

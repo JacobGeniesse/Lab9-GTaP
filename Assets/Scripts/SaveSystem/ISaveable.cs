@@ -5,8 +5,8 @@ using System.Collections.Generic;
 
 public interface ISaveable
 {
-    string SaveID { get; }
-    Dictionary<string, Vector3> SavedData { get; }
-    void LoadFromData(Dictionary<string, Vector3> data);
+    TransformClass SaveID { get; }
+    Dictionary<string, TransformClass> SavedData { get; }
+    void LoadFromData(Dictionary<string, TransformClass> data);
 
 }

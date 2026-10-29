@@ -810,6 +810,7 @@ GameObject:
   - component: {fileID: 1640296788}
   - component: {fileID: 1640296787}
   - component: {fileID: 1640296792}
+  - component: {fileID: 1640296793}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -884,6 +885,22 @@ MonoBehaviour:
   shootOffset: {x: 0, y: 0.5, z: 0}
   inputList: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   cooldownLength: 0.75
+--- !u!114 &1640296793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640296786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a85c15d085535f429380205d52ba5e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TransformSaver
+  transformData:
+    localPosition: {x: 0, y: 0, z: 0}
+    localRotation: {x: 0, y: 0, z: 0, w: 0}
+    localScale: {x: 0, y: 0, z: 0}
 --- !u!1 &1836400014
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,6 +1051,7 @@ GameObject:
   - component: {fileID: 2040826979}
   - component: {fileID: 2040826980}
   - component: {fileID: 2040826981}
+  - component: {fileID: 2040826982}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1119,6 +1137,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Score
   score: 0
+--- !u!114 &2040826982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040826976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd5998e346fc74f49a4b3a6749e80a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveManager
+  inputList: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
