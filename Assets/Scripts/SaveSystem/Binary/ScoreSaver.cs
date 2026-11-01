@@ -11,7 +11,7 @@ public static class ScoreSaver
      * Because I couldn't figure out an alternative, I used it anyway since that was the example provided
      * and it's what I could figure out in the time I had to work on this.
      * 
-     * Source: 
+     * Source: https://learn.microsoft.com/en-us/dotnet/standard/serialization/binaryformatter-security-guide
      */
 
     //Func for saving the score
