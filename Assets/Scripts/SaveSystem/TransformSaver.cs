@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class TransformSaver : MonoBehaviour, ISaveable
 {
-    private const string LOCAL_TRANSFORM_KEY = "localTrans";
+    [Tooltip("Key referenced in the save data. DO NOT EDIT DURING RUNTIME")]
+    [SerializeField] public string LOCAL_TRANSFORM_KEY = "localTrans";
 
-    [SerializeField] private TransformClass transformData;
+    [SerializeField, HideInInspector] private TransformClass transformData; //Saved transform data
 
-
+    //Create the transform data by setting the variables within to equal their pratcial counterparts
     public TransformClass SaveID {
         
         get 
@@ -19,20 +20,22 @@ public class TransformSaver : MonoBehaviour, ISaveable
         }
     }
 
+    //Create a dictionary entry with the LOCAL_TRANSFORM_KEY as the key, and the SaveID as the value within
     public Dictionary<string, TransformClass> SavedData
     {
         get
         {
-            var result = new Dictionary<string, TransformClass>();
-            result.Add(LOCAL_TRANSFORM_KEY, SaveID);
-            return result;
+            var result = new Dictionary<string, TransformClass>(); //Make a dictionary for storing the data
+            result.Add(LOCAL_TRANSFORM_KEY, SaveID); //Add the result to the stored dictionary
+            //Debug.Log(result[LOCAL_TRANSFORM_KEY]); //Debug message
+            return result; //return the created dictionary
         }
     }
 
-    public void LoadFromData(Dictionary<string, TransformClass> data)
+    //Func used by enemy builder to determine what variety of enemy is being saved
+    public void SetID(string id)
     {
-        
+        LOCAL_TRANSFORM_KEY = id;
     }
-
 
 }

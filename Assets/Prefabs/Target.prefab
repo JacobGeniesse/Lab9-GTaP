@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 6267728516326342181}
   - component: {fileID: 2829233175552240410}
   - component: {fileID: 4076003646044278678}
+  - component: {fileID: 5667464942686164296}
   m_Layer: 0
   m_Name: Target
   m_TagString: Target
@@ -200,3 +201,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.5, y: 1.5}
   m_EdgeRadius: 0
+--- !u!114 &5667464942686164296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6253426280444781225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a85c15d085535f429380205d52ba5e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TransformSaver
+  LOCAL_TRANSFORM_KEY: localTrans
+  transformData:
+    localPosition: {x: 0, y: 0, z: 0}
+    localRotation: {x: 0, y: 0, z: 0, w: 0}
+    localScale: {x: 0, y: 0, z: 0}

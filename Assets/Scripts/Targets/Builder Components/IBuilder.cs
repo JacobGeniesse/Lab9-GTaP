@@ -10,4 +10,6 @@ public interface IBuilder
 
     //Function declaration for choosing the sprite of a target
     void BuildSprite(Sprite sprite);
+
+    void SetID(string tag);
 }

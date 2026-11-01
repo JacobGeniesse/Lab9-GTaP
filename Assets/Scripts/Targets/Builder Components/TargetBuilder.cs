@@ -9,17 +9,20 @@ public class TargetBuilder : MonoBehaviour, IBuilder
     [SerializeField] private Vector3 spawnPoint; //Spawn point for the targets
 
     //Function for building a new target
-    public void Create()
+    public GameObject Create()
     {
         //If a the prefab is valid
         if(newTarget != null)
         {
             GameObject newbie = Instantiate(newTarget, spawnPoint, Quaternion.identity); //Instantiate a new target
+            newbie.name = newTarget.name;
             this.targetBase = newbie.GetComponent<TargetBase>(); //Grab its target base component
+            return newbie;
         }
         else
         {
             Debug.LogWarning("newTarget not assigned!"); //Pass a warning if the prefab isn't valid
+            return null;
         }
     }
 
@@ -40,5 +43,11 @@ public class TargetBuilder : MonoBehaviour, IBuilder
     {
         this.targetBase.SetSprite(sprite);
     }
+
+    public void SetID(string tag)
+    {
+        this.targetBase.SetID(tag);
+    }
+
 
 }

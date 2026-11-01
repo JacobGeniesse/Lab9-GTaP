@@ -48,4 +48,18 @@ public class ScoreManager : MonoBehaviour, IObserver
     {
         UpdateUI();
     }
+
+    //Function for loading the saved score
+    public void LoadScore()
+    {
+        if(ScoreSaver.LoadScore("scoredata.txt") != -9999)
+        {
+            score = ScoreSaver.LoadScore("scoredata.txt"); //Load score from the binary stored in the text file
+        }
+        else
+        {
+            Debug.LogError("Failed to retrive score!"); //Debug message in case the file wasn't found
+        }
+        UpdateUI(); //Update the ui to reflect the loaded score
+    }
 }

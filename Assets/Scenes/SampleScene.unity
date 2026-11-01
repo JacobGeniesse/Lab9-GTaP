@@ -897,6 +897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a85c15d085535f429380205d52ba5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TransformSaver
+  LOCAL_TRANSFORM_KEY: playerTrans
   transformData:
     localPosition: {x: 0, y: 0, z: 0}
     localRotation: {x: 0, y: 0, z: 0, w: 0}

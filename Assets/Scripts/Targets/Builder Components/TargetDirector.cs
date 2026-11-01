@@ -35,7 +35,7 @@ public class TargetDirector : MonoBehaviour
     }
 
     //Func to spawn new targets
-    private void SpawnTarget()
+    public void SpawnTarget()
     {
         //Pick a random number 0-6
         int targetType = Random.Range(0, 7);
@@ -59,6 +59,7 @@ public class TargetDirector : MonoBehaviour
         this.builder.BuildSpeed(targetTypes[1].targetSpeed); //Use the builder's speed definition function
         this.builder.BuildPoints(targetTypes[1].pointValue); //Use the builder's points definition function
         this.builder.BuildSprite(targetTypes[1].targetSprite); //Use the builder's sprite definition function
+        this.builder.SetID("fastTrans");
     }
 
     //Func for setting the attributes of a standard target
@@ -67,5 +68,12 @@ public class TargetDirector : MonoBehaviour
         this.builder.BuildSpeed(targetTypes[0].targetSpeed); //Use the builder's speed definition function
         this.builder.BuildPoints(targetTypes[0].pointValue); //Use the builder's points definition function
         this.builder.BuildSprite(targetTypes[0].targetSprite); //Use the builder's points definition function
+        this.builder.SetID("standardTrans");
+    }
+
+    public void RestartInterval()
+    {
+        CancelInvoke("SpawnTarget");
+        InvokeRepeating("SpawnTarget", initialDelay, continuousDelay); //Infinitely create new targets for the player to hit
     }
 }

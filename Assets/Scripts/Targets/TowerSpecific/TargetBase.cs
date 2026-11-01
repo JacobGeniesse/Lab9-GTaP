@@ -7,12 +7,15 @@ public class TargetBase : MonoBehaviour, IObserver
     [HideInInspector] public float pointValue; //Point value of the target
     [HideInInspector] public Sprite targetSprite; //Target's sprite
 
+    [HideInInspector] public string saveID;
+
     private ScoreTrigger deathIncrement; //Observer death function
 
     private int movementMod = 1; //Horizontal Direction the enemy is moving
 
     private float horizontalScreenLimit = 10f; //Limits of the screen before the target bounces
     private float verticalScreenLimit = 6f; //Vertical limit before the target bounces
+    private TransformSaver saveHolder;
 
     //Upon being enabled add this function to the list of observers on the death incrementing function
     private void OnEnable()
@@ -27,6 +30,8 @@ public class TargetBase : MonoBehaviour, IObserver
         {
             deathIncrement.StartListening(ScoreManager.instance);
         }
+
+        saveHolder = GetComponent<TransformSaver>();
     }
 
     //On disable remove this function from that list to avoid crashes and other issues
@@ -81,6 +86,11 @@ public class TargetBase : MonoBehaviour, IObserver
         targetSprite = sprite;
         SpriteRenderer newSprite = GetComponentInChildren<SpriteRenderer>();
         newSprite.sprite = targetSprite;
+    }
+
+    public void SetID(string id)
+    {
+        saveHolder.SetID(id);
     }
 
     //Function for incrementing point values which can be triggered via observer pattern
